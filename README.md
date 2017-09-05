@@ -50,6 +50,12 @@ https://nvd.nist.gov/products/cpe
 https://cve.mitre.org/
 
 
+## This is a true vulnerability scanner ?
+
+Nop, this script is util to audit banners of services, this tool don't test inputs... Vulnerability scanner its complex, look that following http://www.openvas.org/
+
+
+
 Author: CoolerVoid 
 
 Contact: coolerlair at gmail dot com
