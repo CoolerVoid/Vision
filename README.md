@@ -35,7 +35,7 @@ cpe:/a:isc:bind:9.8.1:p1
 
 ## Common questions:
 
-## How do i write XML output in Nmap ?
+## How to write XML output on Nmap ?
 https://nmap.org/book/output-formats-xml-output.html
 
 ## What is a CPE  ?
@@ -49,4 +49,7 @@ https://nvd.nist.gov/products/cpe
 https://cve.mitre.org/
 
 
-Author: CoolerVoid Contact: coolerlair at gmail dot com
+Author: CoolerVoid 
+Contact: coolerlair at gmail dot com
+Ter Set  5 02:00:09 2017
+
