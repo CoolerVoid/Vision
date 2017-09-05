@@ -17,8 +17,8 @@ Example of results:
 $ python Vision-cpe.py result_nmap.xml 3 txt
 
 ::::: Vision v0.1 - nmap NVD's cpe correlation - Coded by CoolerVoid
-
-PORT: 53
+Host: 127.0.0.1
+Port: 53
 cpe:/a:isc:bind:9.8.1:p1
 
 	URL: https://nvd.nist.gov/vuln/detail/CVE-2016-9131
