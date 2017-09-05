@@ -50,6 +50,8 @@ https://cve.mitre.org/
 
 
 Author: CoolerVoid 
+
 Contact: coolerlair at gmail dot com
+
 Ter Set  5 02:00:09 2017
 
