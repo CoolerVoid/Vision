@@ -33,14 +33,20 @@ cpe:/a:isc:bind:9.8.1:p1
 
 ```
 
-##Common questions:
+## Common questions:
 
-## Whats its CPE  ?
+## How do i write XML output in Nmap ?
+https://nmap.org/book/output-formats-xml-output.html
+
+## What is a CPE  ?
 
 https://nmap.org/book/output-formats-cpe.html
 
 https://nvd.nist.gov/products/cpe
 
-## Whats its CVE ?
+## What is a CVE ?
 
 https://cve.mitre.org/
+
+
+Author: CoolerVoid Contact: coolerlair at gmail dot com
