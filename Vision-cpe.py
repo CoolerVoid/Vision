@@ -83,31 +83,30 @@ try:
 		exit(0)
 
 	for child in root.findall('host'):
+       		for k in child.findall('address'):
+          		host = k.attrib['addr']
+    			for y in child.findall('ports/port'):
+        			current_port = y.attrib['portid']
+        			for z in y.findall('service/cpe'):
+					if len(z.text)>4:
+						cpe=fix_cpe_str(z.text)
+						print "\n::::: Vision v0.1 - nmap NVD's cpe correlation - Coded by CoolerVoid\n"
+						URL_mount="https://nvd.nist.gov/vuln/search/results?adv_search=true&cpe="+cpe
+						r = requests.get(URL_mount,stream=True)
+						if(r.status_code == 200):
+							if type_output == "txt" and counter == 1:
+								txtoutput(r,current_port,cpe,limit,host)
+								counter=0
+	
+							if type_output == "xml" and counter ==1:
+								xmloutput(r,current_port,cpe,limit,host)
+	
+							counter=1;
 
-		for k in child.findall('address'):		
-			host= k.attrib['addr']
-
-		for y in child.findall('ports/port'):		
-			current_port=y.attrib['portid']
-			for z in child.findall('ports/port/service/cpe'):
-				if len(z.text)>4:
-					cpe=fix_cpe_str(z.text)
-					print "\n::::: Vision v0.1 - nmap NVD's cpe correlation - Coded by CoolerVoid\n"
-					URL_mount="https://nvd.nist.gov/vuln/search/results?adv_search=true&cpe="+cpe
-					r = requests.get(URL_mount,stream=True)
-					if(r.status_code == 200):
-						if type_output == "txt" and counter == 1:
-							txtoutput(r,current_port,cpe,limit,host)
-							counter=0
-
-						if type_output == "xml" and counter ==1:
-							xmloutput(r,current_port,cpe,limit,host)
-
-						counter=1;
-					else:
-						print "\n Problem in NVD NIST server\n"
-						exit(0)
-					z.text=""
+						else:
+							print "\n Problem in NVD NIST server\n"
+							exit(0)
+						z.text=""
  else:
 	print "\nError needs nmap's XML scan result by passed by first argument\n"
 	banner_vision()
