@@ -110,7 +110,7 @@ try:
 					z.text=""
  else:
 	print "\nError needs nmap's XML scan result by passed by first argument\n"
-	print banner_vision()
+	banner_vision()
 
 except NameError:
  print "\nError\n Here! \n"
