@@ -12,7 +12,7 @@ Nmap's XML parse and NVD CPE correlation with CVE
 	argv 3 = Type of output (xml or txt)
 ```
 
-Example of results:
+## Example of results:
 ```
 $ python Vision-cpe.py result_nmap.xml 3 txt
 
@@ -32,3 +32,15 @@ cpe:/a:isc:bind:9.8.1:p1
 
 
 ```
+
+##Common questions:
+
+## Whats its CPE  ?
+
+https://nmap.org/book/output-formats-cpe.html
+
+https://nvd.nist.gov/products/cpe
+
+## Whats its CVE ?
+
+https://cve.mitre.org/
