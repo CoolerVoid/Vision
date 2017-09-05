@@ -1,7 +1,6 @@
 # Vision
-![Future Sight - mtg game card](http://blog.mtgprice.com/wp-content/uploads/2014/08/Future_Sight_640.jpg | width=90 | height=100)
 
-Nmap's XML parse and NVD CPE correlation with CVE
+Nmap's XML parse and NVD CPE correlation with CVE.
 
 ```
 	..::: VISION v0.1 :::... 
