@@ -56,7 +56,8 @@ Nop, this script is util to audit banners of services, this tool don't test inpu
 
 
 
-Author: CoolerVoid 
+
+Author: CoolerVoid - just another computer programmer...
 
 Contact: coolerlair at gmail dot com
 
