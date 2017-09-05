@@ -7,7 +7,7 @@ import warnings
 warnings.simplefilter("ignore")
 
 def banner_vision():
- print """		..::: VISION v0.1 :::... 
+  	print """		..::: VISION v0.1 :::... 
         Nmap\'s XML result parser and NVD's CPE correlation to search CVE
 	
 	Example:
@@ -19,13 +19,15 @@ def banner_vision():
 
 											Coded by CoolerVoid  
 """
+	return ;
 
 def fix_cpe_str(str):
- str=str.replace('-',':')
- return str
+	str=str.replace('-',':')
+ 	return str
 
-def txtoutput(r,port,cpe,limit):
-	print "PORT: "+port
+def txtoutput(r,port,cpe,limit,host):
+	print "Host: "+host
+	print "Port: "+port
 	print cpe+"\n"
 	counter=2
 	for line in r.iter_lines():
@@ -45,27 +47,27 @@ def txtoutput(r,port,cpe,limit):
 				counter=2
 	return;
 
-def xmloutput(r,port,cpe,limit):
-	print "\n<vision>\n<port>"+port+"</port>\n"
-	print "<cpe>"+cpe+"</cpe>\n"
+def xmloutput(r,port,cpe,limit,host):
+	print "\n<vision>\n\t<host>"+host+"</host>\n\t<port>"+port+"</port>\n"
+	print "\t<cpe>"+cpe+"</cpe>\n"
 	counter=2
 	for line2 in r.iter_lines():
     		if line2 and limit != 0: 
 			if line2.find("<strong><a href=\"/vuln/detail/")>1:
 				cve=line2.split('"')
 				cve_url="https://nvd.nist.gov"+cve[1]
-				print "\r<cve> "+cve_url+"</cve>\n"
+				print "\t<cve> "+cve_url+"</cve>\n"
 				counter-=1	
 			if line2.find("data-testid='vuln-summary-")>1:
 				desc_parse=line2.split('>')
 				description=desc_parse[1][:-3]
-				print "\r<description> "+description+"</description>\n"
+				print "\t<description> "+description+"</description>\n"
 				counter-=1
 			if counter == 0:
 				limit-=1
 				counter=2
 	print "</vision>"
-	return
+	return;
 
 
 try:
@@ -73,7 +75,7 @@ try:
  	tree = treant.parse(sys.argv[1])	
 	root = tree.getroot()
 	limit=int(sys.argv[2])
-	type_output=sys.argv[3]
+	type_output=str(sys.argv[3])
 	counter=1
 
 	if len(type_output)>3:
@@ -81,6 +83,10 @@ try:
 		exit(0)
 
 	for child in root.findall('host'):
+
+		for k in child.findall('address'):		
+			host= k.attrib['addr']
+
 		for y in child.findall('ports/port'):		
 			current_port=y.attrib['portid']
 			for z in child.findall('ports/port/service/cpe'):
@@ -90,12 +96,12 @@ try:
 					URL_mount="https://nvd.nist.gov/vuln/search/results?adv_search=true&cpe="+cpe
 					r = requests.get(URL_mount,stream=True)
 					if(r.status_code == 200):
-						if type_output.find('txt',3) and counter == 1:
-							txtoutput(r,current_port,cpe,limit)
+						if type_output == "txt" and counter == 1:
+							txtoutput(r,current_port,cpe,limit,host)
 							counter=0
 
-						if type_output.find('xml',3) and counter ==1:
-							xmloutput(r,current_port,cpe,limit)
+						if type_output == "xml" and counter ==1:
+							xmloutput(r,current_port,cpe,limit,host)
 
 						counter=1;
 					else:
