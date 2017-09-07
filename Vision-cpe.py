@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import xml.etree.ElementTree as treant
-import requests, sys
+import requests, sys, os.path
 import warnings
 
 warnings.simplefilter("ignore")
@@ -92,7 +92,15 @@ def xmloutput(r,port,cpe,limit,host):
 def main(argv):
 	try:
 	 if len(sys.argv)==4:
- 		tree = treant.parse(sys.argv[1])	
+
+		file_input=sys.argv[1]
+
+		if os.path.exists(file_input):	
+ 			tree = treant.parse(file_input)
+		else:
+			print "Either file is missing or is not readable"
+			exit(0)	
+
 		root = tree.getroot()
 		limit=int(sys.argv[2])
 		type_output=str(sys.argv[3])
