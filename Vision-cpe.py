@@ -50,7 +50,7 @@ def txtoutput(r,port,cpe,limit,host):
 				if counter == 0:
 					limit-=1
 					counter=2
-				if "pagination-nav-container" in line:
+				if "pagination\-nav\-container" in line:
 					return;
 					
 	return;
@@ -79,7 +79,7 @@ def xmloutput(r,port,cpe,limit,host):
 				if counter == 0:
 					limit-=1
 					counter=2
-				if "pagination-nav-container" in line2:
+				if "pagination\-nav\-container" in line2:
 					print "</vision>"
 					return;
 
