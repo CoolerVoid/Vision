@@ -34,8 +34,9 @@ def txtoutput(r,port,cpe,limit,host):
 # SAX Style parse 
 	for line in r.iter_lines():
 		if line and limit != 0:
-			if "vuln-results" in line:
-				check_table=1
+			if check_table == 0:
+				if "vuln-results" in line:
+					check_table=1
 			if check_table:
                 		if "href=\"/vuln/detail/" in line:
 					cve=line.split('"')
@@ -63,8 +64,9 @@ def xmloutput(r,port,cpe,limit,host):
 # SAX parse Style
 	for line2 in r.iter_lines():
     		if line2 and limit != 0: 
-			if "vuln-results" in line2:
-				check_table=1
+			if check_table == 0:
+				if "vuln-results" in line2:
+					check_table=1
 			if check_table:
 				if "href=\"/vuln/detail/" in line2:
 					cve=line2.split('"')
