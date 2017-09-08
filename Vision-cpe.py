@@ -5,7 +5,7 @@ from parse import parsers
 
 
 def banner_vision():
-  	print """		..::: VISION v0.1 :::... 
+  	print """		..::: VISION v0.2 :::... 
         Nmap\'s XML result parser and NVD's CPE correlation to search CVE
 	
 	Example:
